@@ -1,0 +1,6 @@
+{
+  "name": "Thiệp Cưới Hồng Hải & Thanh Tú",
+  "description": "Thiệp cưới online sang trọng, tinh tế và hiện đại dành cho cặp đôi Nguyễn Thị Hồng Hải & Trương Thanh Tú - 28/11/2026 tại Khách sạn Bình Minh, Phan Thiết.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
