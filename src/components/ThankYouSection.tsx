@@ -5,7 +5,7 @@ import { WEDDING_DATA } from '../data/weddingData';
 import { BotanicalBranch } from './BotanicalDecoration';
 
 // Asset
-import thankYouCoupleImg from '../assets/images/wedding_thank_you_1790848062714.jpg';
+import thankYouCoupleImg from '../assets/images/image_wedding/AI0I8071.jpg';
 
 export const ThankYouSection: React.FC = () => {
   const [photoMode, setPhotoMode] = useState<'editorial' | 'placeholder'>('editorial');
@@ -53,18 +53,18 @@ export const ThankYouSection: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-xl mx-auto mb-10"
+          className="w-full max-w-lg mx-auto mb-10"
         >
           <div className="bg-white p-4 sm:p-5 rounded-3xl border border-[#E8DFC9] gold-shadow relative overflow-hidden group">
             {photoMode === 'editorial' ? (
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100">
+              <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-stone-100">
                 <img
                   src={thankYouCoupleImg}
                   alt="Lời cảm ơn từ Nguyễn Thị Hồng Hải & Trương Thanh Tú"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-104"
+                  className="absolute inset-0 block w-full h-full max-w-full object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent flex flex-col justify-end p-6 text-white text-left">
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-6 text-white text-left">
                   <span className="font-script-luxury text-2xl sm:text-3xl text-[#EBD7A7]">
                     Thank you for being part of our story
                   </span>
@@ -74,7 +74,7 @@ export const ThankYouSection: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <div className="aspect-[4/3] rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-6 text-center">
+              <div className="aspect-[2/3] rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-6 text-center">
                 <ImageIcon className="w-8 h-8 text-[#9E7D3B] mb-2 opacity-60" />
                 <span className="font-display-luxury text-xs uppercase tracking-widest text-[#9E7D3B] font-semibold">
                   Ảnh Cảm Ơn Cuối Thiệp

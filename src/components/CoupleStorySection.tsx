@@ -3,10 +3,10 @@ import { motion } from 'motion/react';
 import { Camera, Image as ImageIcon, Upload, ZoomIn, X, Info, Heart } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 
-// Generated assets
-import defaultCoupleImg from '../assets/images/wedding_couple_portrait_1790847289808.jpg';
-import floralImg from '../assets/images/wedding_floral_detail_1790847302573.jpg';
-import venueImg from '../assets/images/wedding_reception_venue_1790847312507.jpg';
+// Wedding album assets
+import defaultCoupleImg from '../assets/images/image_wedding/AI0I7504.jpg';
+import floralImg from '../assets/images/image_wedding/AI0I6929.jpg';
+import venueImg from '../assets/images/image_wedding/AI0I7735.jpg';
 
 export const CoupleStorySection: React.FC = () => {
   const [photoMode, setPhotoMode] = useState<'editorial' | 'placeholder'>('editorial');
@@ -120,18 +120,18 @@ export const CoupleStorySection: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mx-auto mb-16"
+          className="w-full max-w-lg mx-auto mb-16"
         >
           <div className="bg-white p-4 sm:p-7 rounded-3xl border border-[#E8DFC9] gold-shadow relative overflow-hidden group hover:border-[#D1C3A5] transition-all duration-500">
             {photoMode === 'editorial' ? (
-              <div className="relative aspect-[3/4] sm:aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-100">
+              <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-stone-100">
                 <img
                   src={currentCoupleImg}
                   alt="Ảnh cưới cô dâu Nguyễn Thị Hồng Hải và chú rể Trương Thanh Tú"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
+                  className="absolute inset-0 block w-full h-full max-w-full object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/65 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/65 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-8 text-white">
                   <span className="font-script-luxury text-3xl sm:text-4xl text-[#EBD7A7]">
                     Together is our favorite place to be
                   </span>
@@ -174,7 +174,7 @@ export const CoupleStorySection: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <div className="aspect-[3/4] sm:aspect-[16/10] w-full rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-8 text-center">
+              <div className="aspect-[2/3] w-full rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-8 text-center">
                 <div className="w-20 h-20 rounded-full border border-[#D5C7AD] flex items-center justify-center bg-white mb-4 text-[#9E7D3B]">
                   <ImageIcon className="w-8 h-8 opacity-70" />
                 </div>
@@ -287,7 +287,7 @@ export const CoupleStorySection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Small Curated Wedding Aesthetic Vignettes with motion */}
+        {/* Small Curated Wedding Aesthetic Vignettes with motion
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -310,12 +310,12 @@ export const CoupleStorySection: React.FC = () => {
               }
               className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-[#E8DFC9] p-3 gold-shadow transition-colors duration-300 hover:border-[#D1C3A5]"
             >
-              <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-stone-100">
+              <div className="aspect-[2/3] rounded-xl overflow-hidden relative bg-stone-100">
                 <img
                   src={floralImg}
                   alt="Hoa cưới tinh khôi"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                  className="absolute inset-0 block w-full h-full max-w-full object-contain"
                 />
               </div>
               <div className="pt-3 pb-1 text-center">
@@ -329,22 +329,22 @@ export const CoupleStorySection: React.FC = () => {
               onClick={() =>
                 setActiveLightboxImg({
                   src: venueImg,
-                  caption: 'Sảnh tiệc Khách sạn Bình Minh, Phan Thiết',
+                  caption: 'Khoảnh khắc hạnh phúc của Hồng Hải & Thanh Tú',
                 })
               }
               className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-[#E8DFC9] p-3 gold-shadow transition-colors duration-300 hover:border-[#D1C3A5]"
             >
-              <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-stone-100">
+              <div className="aspect-[2/3] rounded-xl overflow-hidden relative bg-stone-100">
                 <img
                   src={venueImg}
-                  alt="Sảnh tiệc cưới sang trọng"
+                  alt="Ảnh cưới Hồng Hải & Thanh Tú"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                  className="absolute inset-0 block w-full h-full max-w-full object-contain"
                 />
               </div>
               <div className="pt-3 pb-1 text-center">
-                <p className="font-serif-luxury text-base text-stone-800">Sảnh Tiệc Ấm Cúng</p>
-                <span className="text-[11px] text-stone-400">Khách sạn Bình Minh</span>
+                <p className="font-serif-luxury text-base text-stone-800">Nụ Cười Hạnh Phúc</p>
+                <span className="text-[11px] text-stone-400">Hồng Hải & Thanh Tú</span>
               </div>
             </motion.div>
 
@@ -368,7 +368,7 @@ export const CoupleStorySection: React.FC = () => {
               </motion.button>
             </motion.div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Lightbox Modal */}
@@ -378,13 +378,13 @@ export const CoupleStorySection: React.FC = () => {
           onClick={() => setActiveLightboxImg(null)}
         >
           <div
-            className="relative max-w-4xl max-h-[90vh] flex flex-col items-center"
+            className="relative w-full min-w-0 max-w-4xl max-h-[90dvh] pt-12 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveLightboxImg(null)}
               type="button"
-              className="absolute -top-12 right-0 text-white/80 hover:text-white p-2 cursor-pointer"
+              className="absolute top-0 right-0 text-white/80 hover:text-white p-2 cursor-pointer"
               aria-label="Đóng ảnh"
             >
               <X className="w-6 h-6" />
@@ -393,9 +393,9 @@ export const CoupleStorySection: React.FC = () => {
               src={activeLightboxImg.src}
               alt={activeLightboxImg.caption}
               referrerPolicy="no-referrer"
-              className="max-h-[80vh] w-auto rounded-lg object-contain shadow-2xl"
+              className="block min-h-0 max-h-[70dvh] w-auto max-w-full shrink rounded-lg object-contain shadow-2xl"
             />
-            <p className="text-white/85 text-sm mt-3 text-center font-serif-luxury italic">
+            <p className="max-w-full shrink-0 break-words text-white/85 text-sm mt-3 text-center font-serif-luxury italic">
               {activeLightboxImg.caption}
             </p>
           </div>

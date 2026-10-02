@@ -4,19 +4,19 @@ import { ChevronLeft, ChevronRight, LayoutGrid, SlidersHorizontal, ZoomIn, X, Ca
 import { BotanicalBranch } from './BotanicalDecoration';
 
 // Assets
-import imgHero from '../assets/images/wedding_hero_cinematic_1790848020262.jpg';
-import imgPortrait from '../assets/images/wedding_couple_portrait_1790847289808.jpg';
-import imgFloral from '../assets/images/wedding_floral_detail_1790847302573.jpg';
-import imgProposal from '../assets/images/wedding_love_proposal_1790848034643.jpg';
-import imgVenue from '../assets/images/wedding_coastal_venue_1790848051165.jpg';
-import imgThankYou from '../assets/images/wedding_thank_you_1790848062714.jpg';
+import imgHero from '../assets/images/image_wedding/AI0I7187.jpg';
+import imgPortrait from '../assets/images/image_wedding/AI0I7504.jpg';
+import imgFloral from '../assets/images/image_wedding/AI0I6929.jpg';
+import imgProposal from '../assets/images/image_wedding/AI0I7280.jpg';
+import imgVenue from '../assets/images/image_wedding/AI0I7072.jpg';
+import imgThankYou from '../assets/images/image_wedding/AI0I8071.jpg';
 
 interface GalleryPhoto {
   id: string;
   src: string;
   title: string;
   subtitle: string;
-  aspect: string;
+  aspectRatio: number;
 }
 
 export const WeddingGallery: React.FC = () => {
@@ -33,46 +33,48 @@ export const WeddingGallery: React.FC = () => {
     {
       id: 'g-1',
       src: imgHero,
-      title: 'Bình Minh & Hoàng Hôn Biển',
+      title: 'Chung Đôi Bên Biển',
       subtitle: 'Phan Thiết, 2026',
-      aspect: 'aspect-[16/10]',
+      aspectRatio: 5200 / 3648,
     },
     {
       id: 'g-2',
       src: imgPortrait,
       title: 'Hồng Hải & Thanh Tú',
       subtitle: 'Khoảnh khắc trọn vẹn',
-      aspect: 'aspect-[3/4]',
+      aspectRatio: 3466 / 5472,
     },
     {
       id: 'g-3',
       src: imgFloral,
       title: 'Hoa Cưới Tinh Khôi',
       subtitle: 'Hương thơm thuần khiết',
-      aspect: 'aspect-[4/3]',
+      aspectRatio: 5200 / 3648,
     },
     {
       id: 'g-4',
       src: imgProposal,
       title: 'Lời Hẹn Ước Trăm Năm',
-      subtitle: 'Ánh nến & Trao nhẫn',
-      aspect: 'aspect-[4/3]',
+      subtitle: 'Khoảnh khắc bên nhau',
+      aspectRatio: 3466 / 5472,
     },
     {
       id: 'g-5',
       src: imgVenue,
-      title: 'Khách Sạn Bình Minh',
-      subtitle: 'Không gian tiệc cưới ven biển',
-      aspect: 'aspect-[16/10]',
+      title: 'Tình Yêu Bên Sóng Biển',
+      subtitle: 'Kỷ niệm ngọt ngào của đôi mình',
+      aspectRatio: 5043 / 3538,
     },
     {
       id: 'g-6',
       src: imgThankYou,
       title: 'Nụ Cười Hạnh Phúc',
       subtitle: 'Chung đôi trọn đời',
-      aspect: 'aspect-[3/4]',
+      aspectRatio: 3391 / 5353,
     },
   ];
+
+  const currentPhoto = galleryItems[currentIndex];
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % galleryItems.length);
@@ -203,22 +205,26 @@ export const WeddingGallery: React.FC = () => {
         {/* View Mode 1: Swipeable Carousel */}
         {viewMode === 'carousel' && (
           <div
-            className="relative max-w-4xl mx-auto"
+            className="relative w-full mx-auto"
+            style={{ maxWidth: `min(56rem, calc(70svh * ${currentPhoto.aspectRatio} + 3rem))` }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             {/* Carousel Main Container */}
             <div className="overflow-hidden rounded-3xl bg-white p-3 sm:p-6 border border-[#E8DFC9] gold-shadow">
-              <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-100 group">
+              <div
+                className="relative w-full rounded-2xl overflow-hidden bg-stone-100 group"
+                style={{ aspectRatio: currentPhoto.aspectRatio }}
+              >
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`${currentIndex}-${photoMode}`}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.02 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full relative"
+                    className="absolute inset-0 w-full h-full"
                   >
                     {photoMode === 'editorial' ? (
                       <>
@@ -226,9 +232,9 @@ export const WeddingGallery: React.FC = () => {
                           src={galleryItems[currentIndex].src}
                           alt={galleryItems[currentIndex].title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-104"
+                          className="absolute inset-0 block w-full h-full max-w-full object-contain"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-8 text-white">
                           <span className="text-xs uppercase tracking-widest text-[#E8D4A8] font-medium">
                             {galleryItems[currentIndex].subtitle}
                           </span>
@@ -307,7 +313,7 @@ export const WeddingGallery: React.FC = () => {
 
         {/* View Mode 2: Masonry Grid */}
         {viewMode === 'grid' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-start gap-6">
             {galleryItems.map((item, idx) => (
               <motion.div
                 key={item.id}
@@ -324,19 +330,19 @@ export const WeddingGallery: React.FC = () => {
                 }}
               >
                 {photoMode === 'editorial' ? (
-                  <div className={`relative ${item.aspect} rounded-2xl overflow-hidden bg-stone-100`}>
+                  <div className="relative rounded-2xl overflow-hidden bg-stone-100" style={{ aspectRatio: item.aspectRatio }}>
                     <img
                       src={item.src}
                       alt={item.title}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
+                      className="absolute inset-0 block w-full h-full max-w-full object-contain"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <ZoomIn className="w-6 h-6 text-white drop-shadow-md" />
                     </div>
                   </div>
                 ) : (
-                  <div className={`border-2 border-dashed border-[#D5C7AD] rounded-2xl ${item.aspect} bg-[#FAF8F5] flex flex-col items-center justify-center p-4 text-center`}>
+                  <div className="border-2 border-dashed border-[#D5C7AD] rounded-2xl bg-[#FAF8F5] flex flex-col items-center justify-center p-4 text-center" style={{ aspectRatio: item.aspectRatio }}>
                     <Camera className="w-6 h-6 text-[#9E7D3B] mb-1 opacity-60" />
                     <span className="text-xs font-serif-luxury font-medium text-stone-700">Khung ảnh #{idx + 1}</span>
                     <span className="text-[10px] text-stone-400 mt-0.5">[Placeholder]</span>
@@ -362,13 +368,13 @@ export const WeddingGallery: React.FC = () => {
           onClick={() => setActiveLightboxImg(null)}
         >
           <div
-            className="relative max-w-4xl max-h-[90vh] flex flex-col items-center"
+            className="relative w-full min-w-0 max-w-4xl max-h-[90dvh] pt-12 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveLightboxImg(null)}
               type="button"
-              className="absolute -top-12 right-0 text-white/80 hover:text-white p-2 cursor-pointer"
+              className="absolute top-0 right-0 text-white/80 hover:text-white p-2 cursor-pointer"
               aria-label="Đóng ảnh"
             >
               <X className="w-6 h-6" />
@@ -377,9 +383,9 @@ export const WeddingGallery: React.FC = () => {
               src={activeLightboxImg.src}
               alt={activeLightboxImg.caption}
               referrerPolicy="no-referrer"
-              className="max-h-[80vh] w-auto rounded-lg object-contain shadow-2xl"
+              className="block min-h-0 max-h-[70dvh] w-auto max-w-full shrink rounded-lg object-contain shadow-2xl"
             />
-            <p className="text-white/85 text-sm mt-3 text-center font-serif-luxury italic">
+            <p className="max-w-full shrink-0 break-words text-white/85 text-sm mt-3 text-center font-serif-luxury italic">
               {activeLightboxImg.caption}
             </p>
           </div>

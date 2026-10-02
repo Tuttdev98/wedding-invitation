@@ -4,10 +4,10 @@ import { Heart, Calendar, Sparkles, Image as ImageIcon, ZoomIn, X } from 'lucide
 import { BotanicalBranch } from './BotanicalDecoration';
 
 // Assets
-import firstMeetImg from '../assets/images/wedding_hero_cinematic_1790848020262.jpg';
-import memorableTripImg from '../assets/images/wedding_coastal_venue_1790848051165.jpg';
-import proposalImg from '../assets/images/wedding_love_proposal_1790848034643.jpg';
-import weddingDayImg from '../assets/images/wedding_couple_portrait_1790847289808.jpg';
+import firstMeetImg from '../assets/images/image_wedding/AI0I7187.jpg';
+import memorableTripImg from '../assets/images/image_wedding/AI0I7072.jpg';
+import proposalImg from '../assets/images/image_wedding/AI0I7280.jpg';
+import weddingDayImg from '../assets/images/image_wedding/AI0I7504.jpg';
 
 interface Milestone {
   id: string;
@@ -16,6 +16,7 @@ interface Milestone {
   title: string;
   description: string;
   image: string;
+  aspect: string;
   caption: string;
 }
 
@@ -31,6 +32,7 @@ export const LoveStorySection: React.FC = () => {
       title: 'Lần Đầu Gặp Gỡ',
       description: 'Một buổi chiều thu nhẹ nhàng, hai ánh mắt vô tình chạm nhau tại góc quán quen. Từ những câu chuyện vu vơ, một sự gắn kết kỳ diệu đã bắt đầu.',
       image: firstMeetImg,
+      aspect: 'aspect-[10/7]',
       caption: 'Ánh nhìn đầu tiên khởi đầu cho một hành trình',
     },
     {
@@ -40,6 +42,7 @@ export const LoveStorySection: React.FC = () => {
       title: 'Chuyến Đi Đáng Nhớ',
       description: 'Chuyến du lịch cùng nhau ngắm hoàng hôn biển Phan Thiết. Dưới tiếng sóng vỗ rì rào và gió biển mặn nồng, chúng mình nhận ra đối phương là người mình muốn đồng hành suốt đời.',
       image: memorableTripImg,
+      aspect: 'aspect-[10/7]',
       caption: 'Hoàng hôn biển Phan Thiết gắn liền với kỷ niệm của hai đứa',
     },
     {
@@ -49,6 +52,7 @@ export const LoveStorySection: React.FC = () => {
       title: 'Khoảnh Khắc Cầu Hôn',
       description: 'Dưới ánh nến lung linh và giai điệu bài hát yêu thích, anh đã ngỏ lời: “Hãy làm vợ anh nhé!”. Nụ cười và cái gật đầu trong nước mắt hạnh phúc của em là món quà vô giá.',
       image: proposalImg,
+      aspect: 'aspect-[2/3]',
       caption: 'Khoảnh khắc “Em đồng ý” dưới ánh nến ấm áp',
     },
     {
@@ -58,6 +62,7 @@ export const LoveStorySection: React.FC = () => {
       title: 'Ngày Chung Đôi',
       description: 'Khoảnh khắc thiêng liêng khi cả hai chính thức trao nhau nhẫn cưới trước sự chứng kiến và chúc phúc của gia đình, người thân và bạn bè quý mến.',
       image: weddingDayImg,
+      aspect: 'aspect-[2/3]',
       caption: 'Nguyễn Thị Hồng Hải & Trương Thanh Tú · Ngày hạnh phúc',
     },
   ];
@@ -133,18 +138,18 @@ export const LoveStorySection: React.FC = () => {
                 } items-center gap-8 sm:gap-14`}
               >
                 {/* Photo Side with Polaroid/Fine Art Frame */}
-                <div className="w-full md:w-1/2">
+                <div className="w-full min-w-0 md:w-1/2 md:flex-1">
                   <motion.div
                     whileHover={{ scale: 1.02, rotate: isReversed ? -1 : 1, transition: { duration: 0.3 } }}
                     className="bg-white p-3.5 sm:p-5 rounded-3xl border border-[#E8DFC9] gold-shadow relative overflow-hidden group"
                   >
                     {photoMode === 'editorial' ? (
-                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100">
+                      <div className={`relative ${item.aspect} rounded-2xl overflow-hidden bg-stone-100`}>
                         <img
                           src={item.image}
                           alt={item.title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
+                          className="absolute inset-0 block w-full h-full max-w-full object-contain"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-4 text-white">
                           <span className="text-xs font-serif-luxury italic drop-shadow-sm">{item.caption}</span>
@@ -160,7 +165,7 @@ export const LoveStorySection: React.FC = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="aspect-[4/3] rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-6 text-center">
+                      <div className={`${item.aspect} rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-6 text-center`}>
                         <ImageIcon className="w-8 h-8 text-[#9E7D3B] mb-2 opacity-60" />
                         <span className="font-display-luxury text-xs uppercase tracking-widest text-[#9E7D3B] font-semibold">
                           Ảnh Kỷ Niệm: {item.title}
@@ -172,7 +177,7 @@ export const LoveStorySection: React.FC = () => {
                     )}
 
                     {/* Polaroid-style caption underneath */}
-                    <div className="pt-3 pb-1 flex items-center justify-between text-xs text-stone-500 border-t border-stone-100/70 mt-3">
+                    <div className="pt-3 pb-1 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500 border-t border-stone-100/70 mt-3">
                       <span className="font-script-luxury text-xl text-[#9E7D3B] font-light">
                         {item.title}
                       </span>
@@ -184,7 +189,7 @@ export const LoveStorySection: React.FC = () => {
                 </div>
 
                 {/* Text Side */}
-                <div className="w-full md:w-1/2 space-y-3.5 sm:px-4">
+                <div className="w-full min-w-0 md:w-1/2 md:flex-1 space-y-3.5 sm:px-4">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF3E5] border border-[#E8DFC9] text-[#9E7D3B]">
                     <Calendar className="w-3.5 h-3.5" />
                     <span className="text-xs font-semibold tracking-wider">{item.date}</span>
@@ -218,13 +223,13 @@ export const LoveStorySection: React.FC = () => {
           onClick={() => setActiveLightboxImg(null)}
         >
           <div
-            className="relative max-w-4xl max-h-[90vh] flex flex-col items-center"
+            className="relative w-full min-w-0 max-w-4xl max-h-[90dvh] pt-12 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveLightboxImg(null)}
               type="button"
-              className="absolute -top-12 right-0 text-white/80 hover:text-white p-2 cursor-pointer"
+              className="absolute top-0 right-0 text-white/80 hover:text-white p-2 cursor-pointer"
               aria-label="Đóng ảnh"
             >
               <X className="w-6 h-6" />
@@ -233,9 +238,9 @@ export const LoveStorySection: React.FC = () => {
               src={activeLightboxImg.src}
               alt={activeLightboxImg.caption}
               referrerPolicy="no-referrer"
-              className="max-h-[80vh] w-auto rounded-lg object-contain shadow-2xl"
+              className="block min-h-0 max-h-[70dvh] w-auto max-w-full shrink rounded-lg object-contain shadow-2xl"
             />
-            <p className="text-white/85 text-sm mt-3 text-center font-serif-luxury italic">
+            <p className="max-w-full shrink-0 break-words text-white/85 text-sm mt-3 text-center font-serif-luxury italic">
               {activeLightboxImg.caption}
             </p>
           </div>

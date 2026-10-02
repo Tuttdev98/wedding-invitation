@@ -5,7 +5,7 @@ import { WEDDING_DATA } from '../data/weddingData';
 import { BotanicalBranch } from './BotanicalDecoration';
 
 // Assets
-import heroCinematicImg from '../assets/images/wedding_hero_cinematic_1790848020262.jpg';
+import heroCinematicImg from '../assets/images/image_wedding/AI0I7187.jpg';
 
 interface HeroSectionProps {
   onOpenRsvp: () => void;
@@ -166,7 +166,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <p className="font-serif-luxury text-xl sm:text-2xl italic text-stone-700 font-normal leading-relaxed text-balance">
               “{WEDDING_DATA.invitationMessage}”
             </p>
-            <div className="mt-3.5 flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-[#9E7D3B]">
+            <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-widest text-[#9E7D3B]">
               <span>Tình yêu bắt đầu từ sự sẻ chia</span>
               <span aria-hidden="true">·</span>
               <span>Đơm hoa kết trái bằng sự gắn kết</span>
@@ -183,14 +183,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         >
           <div className="bg-white p-3 sm:p-5 rounded-3xl border border-[#E8DFC9] gold-shadow relative overflow-hidden group">
             {photoMode === 'editorial' ? (
-              <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full rounded-2xl overflow-hidden bg-stone-100">
+              <div className="relative aspect-[10/7] w-full rounded-2xl overflow-hidden bg-stone-100">
                 <img
                   src={currentHeroImg}
                   alt="Ảnh cưới cinematic Nguyễn Thị Hồng Hải & Trương Thanh Tú"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                  className="absolute inset-0 block w-full h-full max-w-full object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white text-left">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-8 text-white text-left">
                   <span className="font-script-luxury text-2xl sm:text-4xl text-[#EBD7A7]">
                     Forever begins today
                   </span>
@@ -216,7 +216,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="aspect-[16/10] sm:aspect-[21/9] w-full rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-8 text-center">
+              <div className="aspect-[10/7] w-full rounded-2xl border-2 border-dashed border-[#D5C7AD] bg-[#FAF8F5] flex flex-col items-center justify-center p-8 text-center">
                 <ImageIcon className="w-10 h-10 text-[#9E7D3B] mb-2 opacity-60" />
                 <span className="font-display-luxury text-sm uppercase tracking-widest text-[#9E7D3B] font-semibold">
                   Ảnh Bìa Hero Toàn Cảnh

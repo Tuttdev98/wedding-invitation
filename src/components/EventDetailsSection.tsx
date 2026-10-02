@@ -5,7 +5,7 @@ import { WEDDING_DATA } from '../data/weddingData';
 import { BotanicalBranch } from './BotanicalDecoration';
 
 // Asset
-import venueCoastalImg from '../assets/images/wedding_coastal_venue_1790848051165.jpg';
+import venueCoastalImg from '../assets/images/image_wedding/AI0I7072.jpg';
 
 interface EventDetailsSectionProps {
   onOpenMap: () => void;
@@ -48,21 +48,21 @@ export const EventDetailsSection: React.FC<EventDetailsSectionProps> = ({ onOpen
           </p>
         </motion.div>
 
-        {/* Venue Scenic Photo Banner */}
+        {/* Wedding Photo Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.85 }}
-          className="rounded-3xl overflow-hidden mb-10 border border-[#E8DFC9] gold-shadow relative group aspect-[16/9] sm:aspect-[21/9]"
+          className="rounded-3xl overflow-hidden mb-10 border border-[#E8DFC9] gold-shadow relative group aspect-[4/5] sm:aspect-[10/7]"
         >
           <img
             src={venueCoastalImg}
-            alt="Khách sạn Bình Minh, Phan Thiết"
+            alt="Ảnh cưới Hồng Hải & Thanh Tú bên biển"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+            className="absolute inset-0 block w-full h-full max-w-full object-contain"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-stone-900/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-stone-900/25 to-transparent flex flex-col justify-end p-4 sm:p-8 text-white">
             <span className="text-xs uppercase tracking-[0.25em] text-[#E8D4A8] font-semibold">
               Venue & Ambiance
             </span>
